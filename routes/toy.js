@@ -2,11 +2,12 @@ var express = require('express');
 var router = express.Router();
 var ToyModel = require('../models/ToyModel');
 var ManufacturerModel = require('../models/ManufacturerModel');
-
+var CountryModel =require('../models/CountryModel');
 //URL: localhost:3001/toy
 router.get('/', async (req, res) => {
-   var toys = await ToyModel.find({}).populate('manufacturer');
+   var toys = await ToyModel.find({}).populate('manufacturer').populate('country');
    //Path: views/toy/index.hbs
+   var countrys =await ToyModel.find({}).populate('country');
    res.render('toy/index', { toys });
 })
 
@@ -21,9 +22,11 @@ router.get('/customer', async (req, res) => {
    res.render('/', { toys });
    res.redirect('/');
 })
+
 router.get('/add', async (req, res) => {
    var manufacturers = await ManufacturerModel.find({});
-   res.render('toy/add', { manufacturers });
+   var countrys = await CountryModel.find({});
+   res.render('toy/add', { manufacturers, countrys } );
 })
 
 router.post('/add', async (req, res) => {

@@ -1,4 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
+    <link rel="stylesheet" href="../public/stylesheets/style.css">
+    <style>
+        body {
+  font-family: 'Arial', sans-serif;
+  background: url('background-image-url.jpg');
+  background-size: cover;
+  background-color: aqua;
+}
+
+.table {
+  background-color:black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.table th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.btn {
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.form-control, .btn {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .table, .form-control, .btn {
+      width: 100%;
+      box-sizing: border-box;
+  }
+}
+    </style>
+</head>
+<body>
+    
 
 <div class="container mt-3">
     <div class="row mb-3">
@@ -22,6 +74,7 @@
                     <th>Toy price</th>
                     <th>Toy color</th>
                     <th>Toy manufacturer</th>
+                    <th>Toy country</th>
                     <th>Toy image</th>
                     <th colspan="2">Menu</th>
                 </tr>
@@ -33,6 +86,7 @@
                     <td>{{ price }}</td>
                     <td>{{ color }}</td>
                     <td>{{ manufacturer.name }}</td>
+                    <td>{{ country.name }}</td>
                     <td><img src="{{ image }}" alt="" class="img-fluid" style="width: 100px; height: 120px;"></td>
                     <td><a class="btn btn-warning" href="/toy/edit/{{ _id }}">Edit</a></td>
                     <td>
@@ -44,3 +98,6 @@
         </table>
     </div>
 </div>
+
+</body>
+</html>
